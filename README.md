@@ -1,4 +1,4 @@
-# React Native Stuff 15
+# React Native Stuff Template
 
 ## Description
 
