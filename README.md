@@ -27,7 +27,7 @@ To clone: `git clone git@github.com:costa-rica/NativeStuffTemplate.git <optional
 
 ### 1. app.json
 
-```json
+```
 {
   "expo": {
     "name": "NewAppName",
@@ -39,12 +39,9 @@ To clone: `git clone git@github.com:costa-rica/NativeStuffTemplate.git <optional
 
 ### 2. package.json
 
-```json
-export default {
-  expo: {
-    name: "NewAppName",
-    slug: "new-app-name",
-    ...
-  }
-};
+```
+{
+  "name": "new-app-name",
+  ...
+}
 ```
