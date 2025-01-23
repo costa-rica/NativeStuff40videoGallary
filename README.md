@@ -20,3 +20,31 @@ EXPO_PUBLIC_API_URL=http://192.168.1.193:3000
 yarn add @react-navigation/native @react-navigation/native-stack
 npx expo install react-native-screens react-native-safe-area-context
 ```
+
+## Rename project
+
+To clone: `git clone git@github.com:costa-rica/NativeStuffTemplate.git <optional new folder name>`
+
+### 1. app.json
+
+```json
+{
+  "expo": {
+    "name": "NewAppName",
+    "slug": "new-app-name",
+    ...
+  }
+}
+```
+
+### 2. package.json
+
+```json
+export default {
+  expo: {
+    name: "NewAppName",
+    slug: "new-app-name",
+    ...
+  }
+};
+```
