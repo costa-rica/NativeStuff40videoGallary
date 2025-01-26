@@ -7,6 +7,7 @@ import {
   Animated,
   Pressable,
   Text,
+  Platform,
 } from "react-native";
 import { useRef, useState } from "react";
 
