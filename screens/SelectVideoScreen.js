@@ -40,8 +40,24 @@ export default function SelectVideoScreen({ navigation }) {
                 {item.fileName || "Unnamed Video"}
               </Text>
               <Text style={styles.videoUri}>{item.uri}</Text>
+              <Button
+                title="Play"
+                onPress={() =>
+                  navigation.navigate("PlayVideoScreen", {
+                    videoUri: item.uri,
+                  })
+                }
+              />
             </View>
           )}
+          // renderItem={({ item }) => (
+          //   <View style={styles.videoItem}>
+          //     <Text numberOfLines={1} style={styles.videoText}>
+          //       {item.fileName || "Unnamed Video"}
+          //     </Text>
+          //     <Text style={styles.videoUri}>{item.uri}</Text>
+          //   </View>
+          // )}
         />
       </View>
     </ViewTemplate>
