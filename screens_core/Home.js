@@ -22,6 +22,12 @@ export default function Home({ navigation }) {
             description={"How this works"}
             navigation={navigation}
           />
+          <BtnHomNav
+            goTo={"SelectVideoScreen"}
+            title={"Select Video"}
+            description={"Select a video"}
+            navigation={navigation}
+          />
         </View>
       </ScrollView>
     </View>

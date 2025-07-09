@@ -1,8 +1,23 @@
-# React Native Stuff Template
+# React Native Stuff 40 Video Gallery
 
 ## Description
 
 React native mobile app testing template. Set up with navigation to access different screens in screens/.
+
+## Video Gallery
+
+### 1. Installations
+
+`npx expo install expo-image-picker`
+
+#### OBE
+
+I installed this but it seems the expo-image-picker works without react-native-image-picker
+`yarn add react-native-image-picker`
+
+##### ios
+
+`npx pod-install`
 
 ## Environment Variables
 
