@@ -25,9 +25,67 @@ export default function SelectVideoScreen({ navigation }) {
     }
   };
 
+  const handleSendVideo = async (video) => {
+    const formData = new FormData();
+    formData.append("video", {
+      uri: video.uri,
+      name: video.fileName || "video.mp4",
+      type: "video/mp4",
+    });
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 120000); // 120 sec timeout
+
+    try {
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/video`, {
+        method: "POST",
+        body: formData,
+        signal: controller.signal,
+        // headers: {
+        //   "Content-Type": "multipart/form-data",
+        // },
+      });
+      clearTimeout(timeout);
+      const data = await response.json();
+      console.log("Upload response:", data);
+      Alert.alert("Success", "Video sent successfully!");
+    } catch (error) {
+      clearTimeout(timeout);
+      console.error("Upload error:", error);
+      Alert.alert("Error", "Failed to send video.");
+    }
+  };
+
+  const sendTestRequest = async () => {
+    try {
+      // const response = await fetch("http://localhost:3000/video-test", {
+      const response = await fetch(
+        // "http://h9bvjqu-costa-rica-3000.exp.direct/video-test",
+        `${process.env.EXPO_PUBLIC_API_URL}/video-test`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            video: "test",
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log("Test response:", data);
+      Alert.alert("Success", "Test request sent successfully!");
+    } catch (error) {
+      console.error("Test request error:", error);
+      Alert.alert("Error", "Failed to send test request.");
+    }
+  };
+
   return (
     <ViewTemplate navigation={navigation}>
       <View style={styles.container}>
+        <Button title="Send Test Request" onPress={sendTestRequest} />
         <Text style={styles.title}>Select Video:</Text>
         <Button title="Choose Video" onPress={handleSelectVideo} />
 
@@ -47,6 +105,10 @@ export default function SelectVideoScreen({ navigation }) {
                     videoUri: item.uri,
                   })
                 }
+              />
+              <Button
+                title="Send Video"
+                onPress={() => handleSendVideo(item)}
               />
             </View>
           )}
